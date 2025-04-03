@@ -1,42 +1,182 @@
-# LLM Chatbot
+# Mental Health Assistant
 
-The LLM Chatbot example demonstrates how an ICP smart contract can be used to interact with a large language model (LLM) to generate text. The user can input a prompt, and the smart contract will use the LLM to generate a response.
-The response is then returned to the user, and the user can submit some follow-up prompts to continue the conversation.
+A modern, responsive web application built with React and Tailwind CSS that provides mental health support through an AI-powered chatbot interface.
 
-This application's logic is written in [Motoko](https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction), a programming language designed specifically for developing canisters on ICP.
+## Table of Contents
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Development](#development)
+- [Architecture](#architecture)
+- [Contributing](#contributing)
 
-## Deploying from ICP Ninja
+## Features
 
-When viewing this project in ICP Ninja, you can deploy it directly to the mainnet for free by clicking "Deploy" in the upper right corner. Open this project in ICP Ninja:
+- 🎭 **Daily Mood Check-in**: Track your emotional state with an intuitive emoji-based interface
+- 💬 **AI-Powered Chat**: Engage in supportive conversations with an intelligent chatbot
+- 📚 **Resource Library**: Access mental health resources and therapeutic exercises
+- 🌓 **Dark Mode**: Comfortable viewing experience with automatic theme switching
+- 🔒 **Secure**: Built with privacy and security in mind
+- 📱 **Responsive**: Works seamlessly on desktop and mobile devices
 
-[![](https://icp.ninja/assets/open.svg)](https://icp.ninja/i?url=https://github.com/dfinity/examples/motoko/llm_chatbot)
+## Prerequisites
 
-## Project structure
+Before you begin, ensure you have installed:
+- Node.js (v16.0.0 or higher)
+- npm (v7.0.0 or higher)
 
-The `/backend` folder contains the Motoko canister, `app.mo`. The `/frontend` folder contains web assets for the application's user interface. The user interface is written using the React framework. Edit the `mops.toml` file to add [Motoko dependencies](https://mops.one/) to the project.
+## Installation
 
-## Build and deploy from the command-line
-
-To migrate your ICP Ninja project off of the web browser and develop it locally, follow these steps. These steps are necessary if you want to deploy this project for long-term, production use on the mainnet.
-
-### 1. Download your project from ICP Ninja using the 'Download files' button on the upper left corner under the pink ninja star icon.
-
-### 2. Setting up Ollama
-
-To be able to test the agent locally, you'll need a server for processing the agent's prompts. For that, we'll use `ollama`, which is a tool that can download and serve LLMs.
-See the documentation on the [Ollama website](https://ollama.com/) to install it. Once it's installed, run:
-
-```
-ollama serve
-# Expected to start listening on port 11434
-```
-
-The above command will start the Ollama server, so that it can process requests by the agent. Additionally, and in a separate window, run the following command to download the LLM that will be used by the agent:
-
-```
-ollama run llama3.1:8b
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/mental-health-assistant.git
+cd mental-health-assistant
 ```
 
-The above command will download an 8B parameter model, which is around 4GiB. Once the command executes and the model is loaded, you can terminate it. You won't need to do this step again.
+2. Install dependencies:
+```bash
+# Install frontend dependencies
+cd frontend
+npm install
 
-### 3. Open the `BUILD.md` file for further instructions.
+# Install backend dependencies (if applicable)
+cd ../backend
+npm install
+```
+
+## Project Structure
+
+```
+mental-health-assistant/
+├── frontend/                # Frontend React application
+│   ├── public/             # Static files
+│   ├── src/                # Source files
+│   │   ├── components/     # React components
+│   │   ├── App.jsx        # Main application component
+│   │   └── main.jsx       # Application entry point
+│   ├── package.json       # Frontend dependencies
+│   └── vite.config.js     # Vite configuration
+└── backend/               # Backend services (if applicable)
+```
+
+## Usage
+
+1. Start the development server:
+```bash
+cd frontend
+npm run dev
+```
+
+2. Open your browser and navigate to:
+```
+http://localhost:5173
+```
+
+## Development
+
+### Frontend Development
+
+The frontend is built with:
+- React 18.x
+- Vite
+- Tailwind CSS
+- React Router (for navigation)
+
+Key components:
+1. **DailyCheckIn**: 
+   - Entry point for users
+   - Emoji-based mood tracking
+   - Daily mood logging
+
+2. **ChatInterface**:
+   - Real-time chat with AI
+   - Voice input support
+   - Message history
+
+3. **Resources**:
+   - Therapeutic exercises
+   - Professional assistance contacts
+   - Educational materials
+
+4. **Settings**:
+   - Dark mode toggle
+   - Language preferences
+   - Notification settings
+
+### Component Architecture
+
+```jsx
+App
+├── DailyCheckIn
+├── Auth
+│   ├── Login
+│   └── SignUp
+├── HomeScreen
+│   └── MoodTracker
+├── ChatInterface
+│   ├── MessageList
+│   └── InputArea
+├── Resources
+│   ├── ExerciseList
+│   └── HelpContacts
+└── Settings
+```
+
+## Architecture
+
+### State Management
+- Local state using React's useState for component-level state
+- localStorage for persistent settings
+- Context API for theme management
+
+### Styling
+- Tailwind CSS for utility-first styling
+- Dark mode support with class-based theme switching
+- Responsive design with mobile-first approach
+
+### Security
+- Content Security Policy (CSP) implementation
+- Secure API endpoints
+- Error boundaries for graceful error handling
+
+## Error Handling
+
+The application implements React Error Boundaries to catch and handle errors gracefully:
+- Component-level error isolation
+- User-friendly error messages
+- Automatic error reporting (if configured)
+
+## Best Practices
+
+1. **Code Organization**:
+   - Component-based architecture
+   - Separation of concerns
+   - Modular CSS with Tailwind
+
+2. **Performance**:
+   - Code splitting
+   - Lazy loading
+   - Optimized build configuration
+
+3. **Accessibility**:
+   - ARIA labels
+   - Keyboard navigation
+   - Screen reader support
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support, please open an issue in the GitHub repository or contact the development team.

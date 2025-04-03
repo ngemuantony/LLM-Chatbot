@@ -1,5 +1,6 @@
-import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
 import { fileURLToPath, URL } from 'url';
 import environment from 'vite-plugin-environment';
 
@@ -22,16 +23,35 @@ export default defineConfig({
       {
         find: 'declarations',
         replacement: fileURLToPath(new URL('../src/declarations', import.meta.url))
+      },
+      {
+        find: '@',
+        replacement: path.resolve(__dirname, './src')
       }
     ]
   },
   server: {
+    port: 5173,
+    strictPort: true,
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:4943',
-        changeOrigin: true
+        changeOrigin: true,
+        secure: false,
+        ws: true
       }
     },
     host: '127.0.0.1'
-  }
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+        },
+      },
+    },
+  },
 });

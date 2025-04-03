@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.dark {
+  @apply bg-gray-900 text-white;
+}
+
+.dark .bg-white {
+  @apply bg-gray-800;
+}
+
+.dark .text-gray-700 {
+  @apply text-gray-300;
+}
+
+.dark .hover\:bg-gray-100 {
+  @apply hover:bg-gray-700;
+}
+
+.dark .border {
+  @apply border-gray-700;
+}
