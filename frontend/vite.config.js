@@ -9,7 +9,9 @@ export default defineConfig({
   plugins: [react(), environment('all', { prefix: 'CANISTER_' }), environment('all', { prefix: 'DFX_' })],
   envDir: '../',
   define: {
-    'process.env': process.env
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    'process.env.DFX_NETWORK': JSON.stringify(process.env.DFX_NETWORK),
+    'process.env.BACKEND_CANISTER_ID': JSON.stringify(process.env.CANISTER_ID_BACKEND),
   },
   optimizeDeps: {
     esbuildOptions: {
@@ -30,6 +32,22 @@ export default defineConfig({
       }
     ]
   },
+  build: {
+    target: 'esnext',
+    outDir: 'dist',
+    emptyOutDir: true,
+    sourcemap: true,
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+        },
+      },
+    },
+  },
   server: {
     port: 5173,
     strictPort: true,
@@ -42,16 +60,5 @@ export default defineConfig({
       }
     },
     host: '127.0.0.1'
-  },
-  build: {
-    outDir: 'dist',
-    sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-        },
-      },
-    },
   },
 });

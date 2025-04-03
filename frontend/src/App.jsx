@@ -4,6 +4,10 @@ import HomeScreen from './components/HomeScreen';
 import ChatInterface from './components/ChatInterface';
 import Resources from './components/Resources';
 import Settings from './components/Settings';
+import MusicMeditation from './components/MusicMeditation';
+import VirtualCommunity from './components/VirtualCommunity';
+import Recommendations from './components/Recommendations';
+import SelfAssessment from './components/SelfAssessment';
 
 const DailyCheckIn = ({ onComplete }) => {
   const handleClick = () => {
@@ -84,6 +88,14 @@ const App = () => {
         return <HomeScreen onNavigate={handleNavigation} user={user} />;
       case 'chat':
         return <ChatInterface user={user} />;
+      case 'music-meditation':
+        return <MusicMeditation />;
+      case 'virtual-community':
+        return <VirtualCommunity />;
+      case 'recommendations':
+        return <Recommendations />;
+      case 'self-assessment':
+        return <SelfAssessment />;
       case 'resources':
         return <Resources />;
       case 'settings':
@@ -116,6 +128,30 @@ const App = () => {
                   className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                 >
                   Chat
+                </button>
+                <button
+                  onClick={() => handleNavigation('music-meditation')}
+                  className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
+                  Meditation
+                </button>
+                <button
+                  onClick={() => handleNavigation('virtual-community')}
+                  className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
+                  Community
+                </button>
+                <button
+                  onClick={() => handleNavigation('recommendations')}
+                  className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
+                  Help
+                </button>
+                <button
+                  onClick={() => handleNavigation('self-assessment')}
+                  className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
+                  Assessment
                 </button>
                 <button
                   onClick={() => handleNavigation('resources')}

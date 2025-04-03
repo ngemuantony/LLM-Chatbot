@@ -1,0 +1,12 @@
+sudo] password for devops: 
+ollama 0.5.7 from Matias Piipari (mz2) installed
+devops@devops-HP-Laptop:~/OUTSOURCE/LLM-Chatbot$ ollama serve
+Couldn't find '/home/devops/snap/ollama/30/.ollama/id_ed25519'. Generating new private key.
+Your new public key is: 
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMMnBuZjHMXTKznqX2Xhn5ldPgtwnGYtPZ4Rz8wPphBy
+
+Error: listen tcp 127.0.0.1:11434: bind: address already in use
+ 1 devops@devops-HP-Laptop:~/OUTSOURCE/LLM-Chatbot$ curl http://localhost:11434/api/tags
+{"models":[]}devops@devops-HP-Laptop:~/OUTSOURCE/LLM-Chatbot$ ollama pull gemma:2b
+pulling manifest 
